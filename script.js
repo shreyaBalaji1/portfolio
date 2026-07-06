@@ -160,25 +160,24 @@ function initProjects() {
     
     projectsGrid.innerHTML = projectsData.map(project => `
         <div class="project-card">
-            <div class="project-header">
-                ${project.icon || '🚀'}
-            </div>
+            ${project.liveUrl && project.liveUrl.trim() ?
+                `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-header" aria-label="Open live demo of ${project.title}">
+                    <span class="project-header-icon">${project.icon || '🚀'}</span>
+                    <span class="project-header-hint"><i class="fas fa-arrow-up-right-from-square"></i> View Live Demo</span>
+                </a>`
+                : `<div class="project-header">
+                    <span class="project-header-icon">${project.icon || '🚀'}</span>
+                </div>`}
             <div class="project-body">
                 <h3 class="project-title">${project.title}</h3>
                 <p class="project-description">${project.description}</p>
                 <div class="project-tech">
-                    ${project.technologies.map(tech => 
+                    ${project.technologies.map(tech =>
                         `<span class="tech-badge">${tech}</span>`
                     ).join('')}
                 </div>
             </div>
             <div class="project-footer">
-                ${project.liveUrl && project.liveUrl.trim() ?
-                    `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-btn">
-                        <i class="fas fa-arrow-up-right-from-square"></i>
-                        <span>Live Demo</span>
-                    </a>`
-                    : ''}
                 ${project.githubUrl && project.githubUrl.trim() ?
                     `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-btn secondary">
                         <i class="fab fa-github"></i>
