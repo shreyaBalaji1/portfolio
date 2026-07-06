@@ -1078,6 +1078,19 @@ section {
     box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
 }
 
+.project-btn.secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    box-shadow: none;
+}
+
+.project-btn.secondary:hover {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+}
+
 .project-btn:active {
     transform: translateY(-1px);
 }

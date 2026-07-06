@@ -1,6 +1,14 @@
 // Projects Data
 const projectsData = [
     {
+        title: "🔹 MediScan",
+        description: "A full-stack medication lookup app with JWT-based accounts, real FDA drug data via the openFDA API, saved favorites, personal notes, and a drug interaction checker that cross-references FDA label text between two medications.",
+        technologies: ["Angular", "C#/.NET Web API", "Entity Framework Core", "SQL", "JWT Auth"],
+        githubUrl: "https://github.com/shreyaBalaji1/MediScan",
+        liveUrl: "https://mediscan-ui.vercel.app",
+        icon: "💊"
+    },
+    {
         title: "🔹 Physics-Informed ML for Battery Degradation",
         description: "Research project using LSTM, CNN, and Transformer architectures to predict State of Health (SOH) and Remaining Useful Life (RUL) on CALCE battery datasets. Emphasizes physics-informed features, extensive preprocessing, and model comparison for robust degradation forecasting.",
         technologies: ["Python", "LSTM", "CNN", "Transformer", "Data Preprocessing", "Physics-Informed ML"],
@@ -165,12 +173,18 @@ function initProjects() {
                 </div>
             </div>
             <div class="project-footer">
-                ${project.githubUrl && project.githubUrl.trim() ? 
-                    `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-btn">
+                ${project.liveUrl && project.liveUrl.trim() ?
+                    `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-btn">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <span>Live Demo</span>
+                    </a>`
+                    : ''}
+                ${project.githubUrl && project.githubUrl.trim() ?
+                    `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-btn secondary">
                         <i class="fab fa-github"></i>
                         <span>View Repository</span>
-                    </a>` 
-                    : '<div class="project-btn" style="opacity: 0.5; cursor: not-allowed;"><i class="fab fa-github"></i><span>Repository Coming Soon</span></div>'}
+                    </a>`
+                    : '<div class="project-btn secondary" style="opacity: 0.5; cursor: not-allowed;"><i class="fab fa-github"></i><span>Repository Coming Soon</span></div>'}
             </div>
         </div>
     `).join('');
