@@ -10,6 +10,15 @@ const projectsData = [
         icon: "💊"
     },
     {
+        title: "🔹 Distributed API Observability Platform",
+        description: "A mini Datadog/New Relic built from scratch: 5 Spring Boot microservices publish latency and error metrics through a Kafka pipeline, a Redis-cached query API aggregates them, and a React dashboard visualizes p95/p99 latency, error rates, and live alerts in real time. Includes an on-demand incident simulator to trigger a live traffic spike.",
+        technologies: ["Spring Boot", "Kafka", "PostgreSQL", "Redis", "React", "TypeScript", "Docker"],
+        githubUrl: "https://github.com/shreyaBalaji1/api-observability-platform",
+        video: "videos/api-observability-demo.mp4",
+        image: "images/api-observability-preview.png",
+        icon: "📊"
+    },
+    {
         title: "🔹 Physics-Informed ML for Battery Degradation",
         description: "Research project using LSTM, CNN, and Transformer architectures to predict State of Health (SOH) and Remaining Useful Life (RUL) on CALCE battery datasets. Emphasizes physics-informed features, extensive preprocessing, and model comparison for robust degradation forecasting.",
         technologies: ["Python", "LSTM", "CNN", "Transformer", "Data Preprocessing", "Physics-Informed ML"],
@@ -159,19 +168,27 @@ function initProjects() {
         return;
     }
     
-    projectsGrid.innerHTML = projectsData.map(project => `
+    projectsGrid.innerHTML = projectsData.map(project => {
+        // A recorded demo video isn't a "live" site, so it gets its own link,
+        // label, and icon rather than reusing the liveUrl "Live Demo" treatment.
+        const demoHref = (project.video && project.video.trim()) || (project.liveUrl && project.liveUrl.trim());
+        const demoIcon = project.video ? 'fa-circle-play' : 'fa-arrow-up-right-from-square';
+        const demoLabel = project.video ? 'Watch Demo' : 'View Live Demo';
+        const demoAriaVerb = project.video ? 'Watch demo video of' : 'Open live demo of';
+
+        const headerMedia = project.image
+            ? `<img class="project-header-image" src="${project.image}" alt="${project.title} screenshot" />`
+            : `<span class="project-header-icon">${project.icon || '🚀'}</span>`;
+
+        return `
         <div class="project-card">
-            ${project.liveUrl && project.liveUrl.trim() ?
-                `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-header ${project.image ? 'has-image' : ''}" aria-label="Open live demo of ${project.title}">
-                    ${project.image
-                        ? `<img class="project-header-image" src="${project.image}" alt="${project.title} screenshot" />`
-                        : `<span class="project-header-icon">${project.icon || '🚀'}</span>`}
-                    <span class="project-header-hint"><i class="fas fa-arrow-up-right-from-square"></i> View Live Demo</span>
+            ${demoHref ?
+                `<a href="${demoHref}" target="_blank" rel="noopener noreferrer" class="project-header ${project.image ? 'has-image' : ''}" aria-label="${demoAriaVerb} ${project.title}">
+                    ${headerMedia}
+                    <span class="project-header-hint"><i class="fas ${demoIcon}"></i> ${demoLabel}</span>
                 </a>`
                 : `<div class="project-header ${project.image ? 'has-image' : ''}">
-                    ${project.image
-                        ? `<img class="project-header-image" src="${project.image}" alt="${project.title} screenshot" />`
-                        : `<span class="project-header-icon">${project.icon || '🚀'}</span>`}
+                    ${headerMedia}
                 </div>`}
             <div class="project-body">
                 <h3 class="project-title">${project.title}</h3>
@@ -191,7 +208,8 @@ function initProjects() {
                     : '<div class="project-btn secondary" style="opacity: 0.5; cursor: not-allowed;"><i class="fab fa-github"></i><span>Repository Coming Soon</span></div>'}
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
 }
 
 // Scroll Effects
