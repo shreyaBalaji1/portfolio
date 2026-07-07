@@ -1,15 +1,6 @@
 // Projects Data
 const projectsData = [
     {
-        title: "🔹 MediScan",
-        description: "A full-stack medication lookup app with JWT-based accounts, real FDA drug data via the openFDA API, saved favorites, personal notes, and a drug interaction checker that cross-references FDA label text between two medications.",
-        technologies: ["Angular", "C#/.NET Web API", "Entity Framework Core", "SQL", "JWT Auth"],
-        githubUrl: "https://github.com/shreyaBalaji1/MediScan",
-        liveUrl: "https://mediscan-ui.vercel.app",
-        image: "images/mediscan-preview.png",
-        icon: "💊"
-    },
-    {
         title: "🔹 Distributed API Observability Platform",
         description: "A mini Datadog/New Relic built from scratch: 5 Spring Boot microservices publish latency and error metrics through a Kafka pipeline, a Redis-cached query API aggregates them, and a React dashboard visualizes p95/p99 latency, error rates, and live alerts in real time. Includes an on-demand incident simulator to trigger a live traffic spike.",
         technologies: ["Spring Boot", "Kafka", "PostgreSQL", "Redis", "React", "TypeScript", "Docker"],
@@ -19,25 +10,20 @@ const projectsData = [
         icon: "📊"
     },
     {
-        title: "🔹 Physics-Informed ML for Battery Degradation",
-        description: "Research project using LSTM, CNN, and Transformer architectures to predict State of Health (SOH) and Remaining Useful Life (RUL) on CALCE battery datasets. Emphasizes physics-informed features, extensive preprocessing, and model comparison for robust degradation forecasting.",
-        technologies: ["Python", "LSTM", "CNN", "Transformer", "Data Preprocessing", "Physics-Informed ML"],
-        githubUrl: "https://github.com/shreyaBalaji1/Physics-Informed-ML-for-Battery-Degradation", // Add your repository URL here
-        icon: "�"
+        title: "🔹 MediScan",
+        description: "A full-stack medication lookup app with JWT-based accounts, real FDA drug data via the openFDA API, saved favorites, personal notes, and a drug interaction checker that cross-references FDA label text between two medications.",
+        technologies: ["Angular", "C#/.NET Web API", "Entity Framework Core", "SQL", "JWT Auth"],
+        githubUrl: "https://github.com/shreyaBalaji1/MediScan",
+        liveUrl: "https://mediscan-ui.vercel.app",
+        image: "images/mediscan-preview.png",
+        icon: "💊"
     },
     {
-        title: "🔹 Friends of MLK - Reading Huddle Project",
-        description: "A Vue.js-based web application for the Friends of MLK Reading Huddle program that provides families, parents, faculty, and administrators with interactive literacy resources, structured courses, and data-driven tools to support children’s learning and track educational progress.",
-        technologies: ["Vue.js", "JavaScript", "Tailwind/CSS", "REST APIs", "Role-Based Access"],
-        githubUrl: "https://github.com/UTDallasEPICS/Reading-MLK", // Add your repository URL here
-        icon: "�"
-    },
-    {
-        title: "🔹 Car Comparison App",
-        description: "A Next.js application that lets users save favorites and compare multiple cars side-by-side. Includes features for bookmarking, detailed specification comparisons, and a clean, responsive UI for quick side-by-side analysis.",
-        technologies: ["Next.js", "React", "TypeScript", "CSS", "Client-side State"],
-        githubUrl: "https://github.com/shreyaBalaji1/HackUTD-Project", // Add your repository URL here
-        icon: "�"
+        title: "🔹 AI-Driven Design Methods for Battery SOH Prediction",
+        description: "Collaborated with a professor to train and evaluate deep learning models for battery state-of-health (SOH) prediction. Compared MLP, CNN, LSTM, Attention, and Transformer architectures after preprocessing (outlier removal, smoothing) — CNN came out on top with an R² of 0.9737.",
+        technologies: ["Python", "PyTorch", "NumPy", "Pandas"],
+        githubUrl: "https://github.com/shreyaBalaji1/Physics-Informed-ML-for-Battery-Degradation",
+        icon: "🔋"
     }
 ];
 
