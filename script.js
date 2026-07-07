@@ -6,6 +6,7 @@ const projectsData = [
         technologies: ["Angular", "C#/.NET Web API", "Entity Framework Core", "SQL", "JWT Auth"],
         githubUrl: "https://github.com/shreyaBalaji1/MediScan",
         liveUrl: "https://mediscan-ui.vercel.app",
+        image: "images/mediscan-preview.png",
         icon: "💊"
     },
     {
@@ -161,12 +162,16 @@ function initProjects() {
     projectsGrid.innerHTML = projectsData.map(project => `
         <div class="project-card">
             ${project.liveUrl && project.liveUrl.trim() ?
-                `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-header" aria-label="Open live demo of ${project.title}">
-                    <span class="project-header-icon">${project.icon || '🚀'}</span>
+                `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-header ${project.image ? 'has-image' : ''}" aria-label="Open live demo of ${project.title}">
+                    ${project.image
+                        ? `<img class="project-header-image" src="${project.image}" alt="${project.title} screenshot" />`
+                        : `<span class="project-header-icon">${project.icon || '🚀'}</span>`}
                     <span class="project-header-hint"><i class="fas fa-arrow-up-right-from-square"></i> View Live Demo</span>
                 </a>`
-                : `<div class="project-header">
-                    <span class="project-header-icon">${project.icon || '🚀'}</span>
+                : `<div class="project-header ${project.image ? 'has-image' : ''}">
+                    ${project.image
+                        ? `<img class="project-header-image" src="${project.image}" alt="${project.title} screenshot" />`
+                        : `<span class="project-header-icon">${project.icon || '🚀'}</span>`}
                 </div>`}
             <div class="project-body">
                 <h3 class="project-title">${project.title}</h3>
