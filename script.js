@@ -23,6 +23,8 @@ const projectsData = [
         description: "Collaborated with a professor to train and evaluate deep learning models for battery state-of-health (SOH) prediction. Compared MLP, CNN, LSTM, Attention, and Transformer architectures after preprocessing (outlier removal, smoothing) — CNN came out on top with an R² of 0.9737.",
         technologies: ["Python", "PyTorch", "NumPy", "Pandas"],
         githubUrl: "https://github.com/shreyaBalaji1/Physics-Informed-ML-for-Battery-Degradation",
+        report: "images/battery-soh-output.png",
+        image: "images/battery-soh-output.png",
         icon: "🔋"
     }
 ];
@@ -155,12 +157,15 @@ function initProjects() {
     }
     
     projectsGrid.innerHTML = projectsData.map(project => {
-        // A recorded demo video isn't a "live" site, so it gets its own link,
-        // label, and icon rather than reusing the liveUrl "Live Demo" treatment.
-        const demoHref = (project.video && project.video.trim()) || (project.liveUrl && project.liveUrl.trim());
-        const demoIcon = project.video ? 'fa-circle-play' : 'fa-arrow-up-right-from-square';
-        const demoLabel = project.video ? 'Watch Demo' : 'View Live Demo';
-        const demoAriaVerb = project.video ? 'Watch demo video of' : 'Open live demo of';
+        // A recorded demo video or a results report isn't a "live" site, so each
+        // gets its own link, label, and icon rather than reusing the liveUrl
+        // "Live Demo" treatment. Priority: video > report > liveUrl.
+        const demoHref = (project.video && project.video.trim())
+            || (project.report && project.report.trim())
+            || (project.liveUrl && project.liveUrl.trim());
+        const demoIcon = project.video ? 'fa-circle-play' : project.report ? 'fa-chart-line' : 'fa-arrow-up-right-from-square';
+        const demoLabel = project.video ? 'Watch Demo' : project.report ? 'View Report' : 'View Live Demo';
+        const demoAriaVerb = project.video ? 'Watch demo video of' : project.report ? 'View results report for' : 'Open live demo of';
 
         const headerMedia = project.image
             ? `<img class="project-header-image" src="${project.image}" alt="${project.title} screenshot" />`
